@@ -1,0 +1,11 @@
+name = "gabriellab-presence"
+main = "index.js"
+compatibility_date = "2026-06-09"
+
+[vars]
+LAB_PLATFORM = "cloudflare-workers"
+
+# Optional: set real values via `wrangler secret put LAB_NOSTR_NPUB` etc.
+# LAB_NOSTR_NPUB  -- Nostr public key (npub...)
+# LAB_IPFS_PEER_ID -- IPFS peer ID
+# LAB_TOR_ONION   -- Tor .onion address

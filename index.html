@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>gabriellab — lab presence</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #0a0a0a;
+      color: #d4d4d4;
+      max-width: 720px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    h1 { color: #7ee8a2; letter-spacing: 0.05em; }
+    pre {
+      background: #111;
+      border: 1px solid #2a2a2a;
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .label { color: #888; font-size: 0.85em; margin-top: 24px; }
+    a { color: #7ee8a2; }
+  </style>
+</head>
+<body>
+  <h1>gabriellab</h1>
+  <p class="label">static identity beacon — hosted on GitHub Pages, independent of Mac</p>
+
+  <script type="application/json" id="lab-identity">
+{
+  "identity": "gabriellab",
+  "platform": "github-pages-static",
+  "nostr_npub": "pending",
+  "ipfs_peer_id": "pending",
+  "onion": "pending",
+  "lives_independently_of_mac": true,
+  "handshake": "mutual",
+  "note": "deployed_at and request_path are only available on edge/serverless variants"
+}
+  </script>
+
+  <pre id="display"></pre>
+
+  <p class="label">Dynamic endpoints (live JSON):</p>
+  <ul>
+    <li><a href="https://gabriellab-presence.workers.dev/" target="_blank">Cloudflare Workers</a></li>
+    <li><a href="https://gabriellab-presence.vercel.app/api/lab" target="_blank">Vercel</a></li>
+    <li><a href="https://gabriellab-presence.deno.dev/" target="_blank">Deno Deploy</a></li>
+  </ul>
+
+  <script>
+    (function () {
+      var raw = document.getElementById("lab-identity").textContent;
+      try {
+        var obj = JSON.parse(raw);
+        obj.deployed_at = "(static page — no request time)";
+        obj.request_path = window.location.pathname;
+        document.getElementById("display").textContent = JSON.stringify(obj, null, 2);
+      } catch (e) {
+        document.getElementById("display").textContent = raw;
+      }
+    })();
+  </script>
+</body>
+</html>

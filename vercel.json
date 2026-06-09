@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/(.*)", "dest": "/api/lab.js" }
+  ],
+  "env": {
+    "LAB_PLATFORM": "vercel-serverless"
+  }
+}
