@@ -1,0 +1,23 @@
+# render.yaml — gabriellab presence service on Render
+# Deploy: connect GitHub repo at dashboard.render.com → New Web Service → select repo
+# Free tier: 512MB RAM, spins down after 15 min inactivity (free plan).
+
+services:
+  - type: web
+    name: gabriellab-presence
+    runtime: node
+    plan: free
+    buildCommand: "npm install --omit=dev || true"
+    startCommand: "node server.js"
+    healthCheckPath: /
+    envVars:
+      - key: LAB_PLATFORM
+        value: render-web-service
+      - key: LAB_NOSTR_NPUB
+        value: pending
+      - key: LAB_IPFS_PEER_ID
+        value: pending
+      - key: LAB_TOR_ONION
+        value: pending
+      - key: PORT
+        value: "10000"

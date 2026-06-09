@@ -1,0 +1,15 @@
+{
+  "name": "gabriellab-presence",
+  "version": "1.0.0",
+  "description": "gabriellab identity beacon — multi-platform presence service",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {}
+}
